@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<SwitchPreference
+    android:key="switch_active"
+    android:title="Sort by recent"
+    android:defaultValue="true"
+    android:summary="Switch is active"/>
+
+    <ListPreference
+
+        android:title="Topics"
+        android:key="list_preference"/>
+    <CheckBoxPreference
+        android:key="entertainment"
+        android:title="entertainment"/>
+    <CheckBoxPreference
+        android:key="politics"
+        android:title="politics"/>
+    <CheckBoxPreference
+        android:key="technology"
+        android:title="technology"/>
+    <CheckBoxPreference
+        android:key="automobile"
+        android:title="automobile"/>
 
 </PreferenceScreen>

@@ -48,10 +48,10 @@ public final class QueryUtils {
         }
 
         //Extract earthquakes info from jsonResponse and create a List of EarthQuakes
-        ArrayList<custom> EarthquakeList = getNewsDetails(jsonResponse);
+        ArrayList<custom> List = getNewsDetails(jsonResponse);
 
         // Return the Earthquake List
-        return EarthquakeList;
+        return List;
     }
 
 
