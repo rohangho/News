@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -29,10 +31,10 @@ import static com.example.android.news.R.drawable.a;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<ArrayList<custom>> {
 
 
-    private static final String USGS_REQUEST_URL = "https://content.guardianapis.com/search?api-key=f7959d6c-daf3-433f-83b8-55641f177056";
+    private static final String Gurdian = "https://content.guardianapis.com/search?api-key=f7959d6c-daf3-433f-83b8-55641f177056";
     private Adapter mAdapter;
 
-     TextView mEmptyStateTextView;
+    TextView mEmptyStateTextView;
 
     private Adapter news;
     private static final int id = 1;
@@ -44,51 +46,55 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<A
         setContentView(R.layout.activity_main);
 
         final ListView newsListView = (ListView) findViewById(R.id.list);
-        mEmptyStateTextView = (TextView)findViewById(R.id.Empty_textview);
+        mEmptyStateTextView = (TextView) findViewById(R.id.Empty_textview);
         newsListView.setEmptyView(mEmptyStateTextView);
 
-        loading_Indicator = (ProgressBar)findViewById(R.id.progress_bar);
+        loading_Indicator = (ProgressBar) findViewById(R.id.progress_bar);
 
         mAdapter = new Adapter(this, new ArrayList<custom>());
         newsListView.setAdapter(mAdapter);
 
-        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {@Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            custom current = mAdapter.getItem(position);
-            Uri currentnewsUri = Uri.parse(current.getUrl());
-            Intent launchUrl = new Intent(Intent.ACTION_VIEW, currentnewsUri);
-            startActivity(launchUrl);
+                custom current = mAdapter.getItem(position);
+                Uri currentnewsUri = Uri.parse(current.getUrl());
+                Intent launchUrl = new Intent(Intent.ACTION_VIEW, currentnewsUri);
+                startActivity(launchUrl);
 
-        }
+            }
         });
 
-        ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo !=null && networkInfo.isConnected()){
+        if (networkInfo != null && networkInfo.isConnected()) {
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(id, null, this);
-        }
-
-        else{
+        } else {
             View loadingIndicator = findViewById(R.id.progress_bar);
             loadingIndicator.setVisibility(View.GONE);
             mEmptyStateTextView.setText(R.string.no_internet_connection);
 
         }
     }
+
     @Override
     public Loader<ArrayList<custom>> onCreateLoader(int id, Bundle args) {
 
-        return new Loaders(this,USGS_REQUEST_URL);
+        return new Loaders(this, Gurdian);
     }
 
     @Override
     public void onLoadFinished(Loader<ArrayList<custom>> loader, ArrayList<custom> news) {
-       mEmptyStateTextView.setText("No data foundd");
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+        mEmptyStateTextView.setText("No data found");}
+            else{mEmptyStateTextView.setText("No internet");}
         loading_Indicator.setVisibility(View.GONE);
         mAdapter.clear();
-        if (news!=null && !news.isEmpty()){
+        if (news != null && !news.isEmpty()) {
             mAdapter.addAll(news);
         }
     }
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<A
         return super.onOptionsItemSelected(item);
     }
 }
+
 
 
 

@@ -27,7 +27,7 @@ public class Loaders extends AsyncTaskLoader<ArrayList<custom>> {
         if (mUrl == null){
             return null;
         }
-        ArrayList<custom> Earth = QueryUtils.fetchData(mUrl);
-        return Earth;
+        ArrayList<custom> news = QueryUtils.fetchData(mUrl);
+        return news;
     }
 }

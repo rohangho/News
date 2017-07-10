@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="88dp"
+    android:orientation="vertical"
     android:paddingBottom="16dp">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/heading"
-    android:layout_centerVertical="true"
-    android:textColor="#fdf3e4"
-    android:textStyle="bold"
-    android:textSize="16sp"/>
     <TextView
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#fdf3e4"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+    <TextView
         android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="#3fff1d"
         android:textStyle="italic" />
 
