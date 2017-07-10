@@ -7,6 +7,9 @@ package com.example.android.news;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CheckBox;
+
+import static com.example.android.news.R.drawable.a;
 
 public class settings_activity extends AppCompatActivity {
 
@@ -14,6 +17,8 @@ public class settings_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
+
     }
 
     public static class newsPreferenceFragment extends PreferenceFragment {
@@ -21,7 +26,10 @@ public class settings_activity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
+
         }
+
+
 
 
     }

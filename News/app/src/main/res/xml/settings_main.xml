@@ -5,22 +5,25 @@
     android:title="Sort by recent"
     android:defaultValue="true"
     android:summary="Switch is active"/>
-
     <ListPreference
-
         android:title="Topics"
         android:key="list_preference"/>
     <CheckBoxPreference
+        android:id="@+id/entertainment"
         android:key="entertainment"
         android:title="entertainment"/>
     <CheckBoxPreference
+        android:id="@+id/politics"
         android:key="politics"
         android:title="politics"/>
     <CheckBoxPreference
+        android:id="@+id/technology"
         android:key="technology"
         android:title="technology"/>
     <CheckBoxPreference
+        android:id="@+id/automobile"
         android:key="automobile"
         android:title="automobile"/>
 
 </PreferenceScreen>
+

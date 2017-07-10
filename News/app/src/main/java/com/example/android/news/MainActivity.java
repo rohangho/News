@@ -29,7 +29,7 @@ import static com.example.android.news.R.drawable.a;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<ArrayList<custom>> {
 
 
-    private static final String USGS_REQUEST_URL = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=65b393d26d7a49d9aed3e1950347f1c0";
+    private static final String USGS_REQUEST_URL = "https://content.guardianapis.com/search?api-key=f7959d6c-daf3-433f-83b8-55641f177056";
     private Adapter mAdapter;
 
      TextView mEmptyStateTextView;
@@ -77,13 +77,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<A
 
         }
     }
-
-
-
-
     @Override
     public Loader<ArrayList<custom>> onCreateLoader(int id, Bundle args) {
-
 
         return new Loaders(this,USGS_REQUEST_URL);
     }

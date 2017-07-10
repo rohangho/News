@@ -155,13 +155,14 @@ public final class QueryUtils {
 
         try {
             JSONObject baseJsonResponse=new JSONObject(newsjson);
-            JSONArray newsarray=baseJsonResponse.getJSONArray("articles");
+            JSONObject c=baseJsonResponse.getJSONObject("response");
+            JSONArray newsarray=c.getJSONArray("results");
             for(int i=0;i<newsarray.length();i++){
                 JSONObject current = newsarray.getJSONObject(i);
-                String title=current.getString("title");
-                String url=current.getString("url");
-                String url_img=current.getString("urlToImage");
-                custom books= new custom(url_img,title,url);
+                String title=current.getString("webTitle");
+                String url=current.getString("webUrl");
+                String sectionname=current.getString("sectionName");
+                custom books= new custom(title,url,sectionname);
                 news.add(books);
             }
 

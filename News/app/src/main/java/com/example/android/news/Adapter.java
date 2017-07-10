@@ -33,14 +33,12 @@ public class Adapter extends ArrayAdapter<custom> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_items, parent, false);
         }
-
         custom current=getItem(position);
         TextView title=(TextView) listItemView.findViewById(R.id.heading);
         title.setText(current.getTitle());
-        ImageView img=(ImageView)listItemView.findViewById(R.id.icon);
-        Picasso.with(getContext()).load(current.getResource()).into(img);
+        TextView name=(TextView)listItemView.findViewById(R.id.category);
+        name.setText(current.getName());
         return listItemView;
-
     }
 
 
